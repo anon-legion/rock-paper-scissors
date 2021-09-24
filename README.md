@@ -1,0 +1,1 @@
+Odin JS project to integrate JS script and logic in webapp
