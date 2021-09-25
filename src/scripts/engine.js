@@ -1,13 +1,13 @@
 const computerPlay = () => {
-    let roll = Math.random() * 30, result;
+    let roll = Math.random() * 300, result;
     switch (true) {
-        case roll <= 10 :
+        case Math.round(roll) % 3 === 0:
             result = 'rock';
             break;
-        case roll <= 20 && roll > 10:
+        case Math.round(roll) % 3 === 1:
             result = 'paper';
             break;
-        case roll > 20:
+        case Math.round(roll) % 3 === 2:
             result = 'scissors';
             break;
         default:
@@ -49,6 +49,25 @@ const playRound = (playerChoice, computerChoice) => {
     }
 }
 
-//let userInput = process.argv[2];
+const game = () => {
+    const maxRounds = 5;
+    let currentRound = 0, userInput, computerInput;
+    while (currentRound < maxRounds) {
+        console.log(`Round ${currentRound + 1}`);
+        // userInput = window.prompt('Rock, Paper, Scissors?');
+        userInput = 'scissors' // use button group for userInput;
+        computerInput = computerPlay();
+        console.log(`Computer picked: ${computerInput}`);
+        console.log(`Result: ${playRound(userInput, computerInput)}`);
+        currentRound++;
+    }
+}
 
-console.log(computerPlay());
+game();
+
+// export default game;
+// let userInput = process.argv[2];
+// let computerInput = computerPlay();
+// console.log(`\nComputer picked: ${computerInput}`);
+// console.log(playRound(userInput, computerInput));
+// console.log('\n');
