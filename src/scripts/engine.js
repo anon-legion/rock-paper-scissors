@@ -49,21 +49,6 @@ const playRound = (playerChoice, computerChoice) => {
     }
 }
 
-const game = () => {
-    const maxRounds = 5;
-    let currentRound = 0, userInput, computerInput;
-    while (currentRound < maxRounds) {
-        console.log(`Round ${currentRound + 1}`);
-        // userInput = window.prompt('Rock, Paper, Scissors?');
-        userInput = 'scissors' // use button group for userInput;
-        computerInput = computerPlay();
-        console.log(`Computer picked: ${computerInput}`);
-        console.log(`Result: ${playRound(userInput, computerInput)}`);
-        currentRound++;
-    }
-}
-
-game();
 
 // export default game;
 // let userInput = process.argv[2];

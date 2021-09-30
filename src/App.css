@@ -1,9 +1,10 @@
 .App {
   text-align: center;
+  background-color: #08060B;
+  font-family: Arial, Helvetica, sans-serif
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,4 +12,29 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.btn-group {
+  display: flex;
+  color: #DEDEDF;
+  border-radius: 8px;
+}
+
+.btn {
+  border: 1px solid white;
+  background-color: #20AFBB;
+  padding: 1rem 1rem;
+  width: 150px;
+}
+
+.btn:hover {
+  background-color: #228E99;
+}
+
+.btn-group .btn:first-child {
+  border-radius: 8px 0 0 8px;
+}
+
+.btn-group .btn:last-child {
+  border-radius: 0 8px 8px 0;
 }
