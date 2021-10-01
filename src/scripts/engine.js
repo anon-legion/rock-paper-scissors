@@ -49,10 +49,11 @@ const playRound = (playerChoice, computerChoice) => {
     }
 }
 
-
-// export default game;
 // let userInput = process.argv[2];
 // let computerInput = computerPlay();
 // console.log(`\nComputer picked: ${computerInput}`);
 // console.log(playRound(userInput, computerInput));
 // console.log('\n');
+
+const engineResources = { computerPlay, playRound };
+export default engineResources;

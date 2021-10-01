@@ -1,17 +1,49 @@
 .App {
   text-align: center;
   background-color: #08060B;
-  font-family: Arial, Helvetica, sans-serif
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .App-header {
-  min-height: 100vh;
+  min-height: 18vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-bottom: 2px solid #20AFBB;
+}
+
+.App-header h1, .App-header h2 {
+  margin: 0px;
+  color: #9A6AFF;
+}
+
+.App-body {
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 0px 30px 0px 30px;
+}
+
+.game-display {
+  display: flex;
+  flex-direction: row;
+}
+
+.player h1, .computer h1{
+  margin-top: 0px;
+}
+
+.player-img, .computer-img {
+  display: flex;
+  height: 371px;
+  width: 290px;
 }
 
 .btn-group {
@@ -20,21 +52,25 @@
   border-radius: 8px;
 }
 
-.btn {
+button {
   border: 1px solid white;
+  color: #DEDEDF;
   background-color: #20AFBB;
-  padding: 1rem 1rem;
+  padding: .5rem 1rem;
   width: 150px;
+  border-radius: 0px;
+  font: inherit;
 }
 
-.btn:hover {
+button:hover {
   background-color: #228E99;
+  font-weight: 600;
 }
 
-.btn-group .btn:first-child {
+.btn-group button:first-child {
   border-radius: 8px 0 0 8px;
 }
 
-.btn-group .btn:last-child {
+.btn-group button:last-child {
   border-radius: 0 8px 8px 0;
 }
