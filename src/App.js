@@ -1,11 +1,10 @@
-import React, { useState, useReducer} from 'react';
+import React, { useState, useEffect} from 'react';
 import './App.css';
 import engineResources from './scripts/engine.js';
+import rock from './img/rps_rock.png';
+import paper from './img/rps_paper.png';
+import scissors from './img/rps_scissors.png';
 const { computerPlay, playRound } = engineResources;
-
-const rock = <img src='./images/rps_rock.png' />;
-const paper = <img src='./images/rps_paper.png' />;
-const scissors = <img src='./images/rps_scissors.png' />;
 
 const ACTIONS = {
   ROCK: 'rock',
@@ -13,54 +12,47 @@ const ACTIONS = {
   SCISSORS: 'scissors'
 };
 
-function reducer(state, action) {
-  switch (action.type) {
+
+const imgSelector = (action) => {
+  switch (action) {
     case ACTIONS.ROCK:
-      return { player: rock, computer: window[`${action.payload}`] };
-      break;
+      return rock;
     case ACTIONS.PAPER:
-      return { player: paper, computer: window[`${action.payload}`] };
-      break;
+      return paper;
     case ACTIONS.SCISSORS:
-      return { player: scissors, computer: window[`${action.payload}`] };
-      break;
+      return scissors;
     default:
-      return state;
+      return null;
   }
-};
+}
+
 
 function App() {
-  const [imageState, dispatch] = useReducer(reducer, {player: null, computer: null});
-  const [playerScore, setPlayerScore] = useState(() => 0);
-  const [compScore, setCompScore] = useState(() => 0);
-  const [userInput, setUserInput] = useState(() => '');
-  const [result, setResult] = useState(() => null);
-  let compInput;
+  // const [image, setImage] = useState(() => ({player: null, computer: null}));
+  // const [score, setScore] = useState(() => ({player: 0, computer: 0}));
+  // const [input, setInput] = useState(() => ({}));
 
-  const playerWin = () => {
-    setPlayerScore(currentScore => currentScore + 1);
-  };
+  const [gameState, setGameState] = useState(() => ({
+    image: {player: null, computer: null},
+    input: {player: '', computer: ''}
+  }));
 
-  const computerWin = () => {
-    setCompScore(currentScore => currentScore +1);
-  }
+  const [effectState, setEffectState] = useState(() => ({
+    result: null,
+    score: {player: 0, computer: 0}
+  }));
 
-  function btnOnClick(e) {
-    setUserInput(currentVal => e.target.getAttribute('data-value'));
-    compInput = computerPlay();
-    dispatch({ type: userInput, payload: compInput });
-    console.log(`computerInput =\t${compInput}`);
-    setResult(currentResult => playRound(userInput, compInput));
-    switch (result) {
-      case 'win':
-        playerWin();
-        break;
-      case 'lose':
-        computerWin();
-        break;
-      default:
-        break;
+  useEffect(() => {
+    if(!gameState.input.player) {
+      return null;
+    } else {
+
     }
+  }, [gameState])
+  
+  function btnOnClick(e) {
+    const input = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
+    const image = {player: imgSelector(input.player), computer: imgSelector(input.computer)};
   }
 
   return (
@@ -73,21 +65,21 @@ function App() {
         <div className="game-display">
           <div className="player">
             <h1>Player</h1>
-            <h2>{playerScore}</h2>
+            <h2>{effectState.score.player}</h2>
           </div>
           <div className="player-img">
-            {paper}
+            <img src={gameState.image.player} />
           </div>
           <div className="computer-img">
-            {rock}
+            <img src={gameState.image.computer} />
           </div>
           <div className="computer">
             <h1>Comp</h1>
-            <h2>{compScore}</h2>
+            <h2>{effectState.score.computer}</h2>
           </div>
         </div>
         <div className="result">
-          <h2>{result}</h2>
+          <h2>{effectState.result}</h2>
         </div>
         <div className="btn-group">
           <button onClick={btnOnClick} data-value={ACTIONS.ROCK}>Rock</button>
