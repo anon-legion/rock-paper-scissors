@@ -46,6 +46,16 @@
   width: 290px;
 }
 
+.result {
+  display: flex;
+  height: 125px;
+  width: 450px;
+}
+
+.result h2 {
+  color: #9A6AFF;
+}
+
 .btn-group {
   display: flex;
   color: #DEDEDF;
