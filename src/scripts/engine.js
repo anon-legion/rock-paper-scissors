@@ -1,14 +1,26 @@
+const ACTIONS = {
+  ROCK: 'rock',
+  PAPER: 'paper',
+  SCISSORS: 'scissors'
+};
+
+const RESULTS = {
+    WIN: 'win',
+    LOSE: 'lose',
+    DRAW: 'draw'
+}
+
 const computerPlay = () => {
     let roll = Math.random() * 300, result;
     switch (true) {
         case Math.round(roll) % 3 === 0:
-            result = 'rock';
+            result = ACTIONS.ROCK;
             break;
         case Math.round(roll) % 3 === 1:
-            result = 'paper';
+            result = ACTIONS.PAPER;
             break;
         case Math.round(roll) % 3 === 2:
-            result = 'scissors';
+            result = ACTIONS.SCISSORS;
             break;
         default:
             console.warn('result outside parameter');
@@ -19,32 +31,32 @@ const computerPlay = () => {
 
 const playRound = (playerChoice, computerChoice) => {
     playerChoice = playerChoice.toLowerCase();
-    if (playerChoice === 'rock') {
+    if (playerChoice === ACTIONS.ROCK) {
         switch (computerChoice) {
-            case 'rock':
-                return 'draw';
-            case 'paper':
-                return 'lose';
-            case 'scissors':
-                return 'win';
+            case ACTIONS.ROCK:
+                return RESULTS.DRAW;
+            case ACTIONS.PAPER:
+                return RESULTS.LOSE;
+            case ACTIONS.SCISSORS:
+                return RESULTS.WIN;
         }
-    } else if (playerChoice === 'paper') {
+    } else if (playerChoice === ACTIONS.PAPER) {
         switch (computerChoice) {
-            case 'rock':
-                return 'win';
-            case 'paper':
-                return 'draw';
-            case 'scissors':
-                return 'lose';
+            case ACTIONS.ROCK:
+                return RESULTS.WIN;
+            case ACTIONS.PAPER:
+                return RESULTS.DRAW;
+            case ACTIONS.SCISSORS:
+                return RESULTS.LOSE;
         }
     } else {
         switch (computerChoice) {
-            case 'rock':
-                return 'lose';
-            case 'paper':
-                return 'win';
-            case 'scissors':
-                return 'draw';
+            case ACTIONS.ROCK:
+                return RESULTS.LOSE;
+            case ACTIONS.PAPER:
+                return RESULTS.WIN;
+            case ACTIONS.SCISSORS:
+                return RESULTS.DRAW;
         }
     }
 }
@@ -55,5 +67,5 @@ const playRound = (playerChoice, computerChoice) => {
 // console.log(playRound(userInput, computerInput));
 // console.log('\n');
 
-const engineResources = { computerPlay, playRound };
+const engineResources = { computerPlay, playRound, ACTIONS, RESULTS };
 export default engineResources;

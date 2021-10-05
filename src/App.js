@@ -4,13 +4,7 @@ import engineResources from './scripts/engine.js';
 import rock from './img/rps_rock.png';
 import paper from './img/rps_paper.png';
 import scissors from './img/rps_scissors.png';
-const { computerPlay, playRound } = engineResources;
-
-const ACTIONS = {
-  ROCK: 'rock',
-  PAPER: 'paper',
-  SCISSORS: 'scissors'
-};
+const { computerPlay, playRound, ACTIONS, RESULTS } = engineResources;
 
 
 const imgSelector = (action) => {
@@ -28,10 +22,6 @@ const imgSelector = (action) => {
 
 
 function App() {
-  // const [image, setImage] = useState(() => ({player: null, computer: null}));
-  // const [score, setScore] = useState(() => ({player: 0, computer: 0}));
-  // const [input, setInput] = useState(() => ({}));
-
   const [gameState, setGameState] = useState(() => ({
     image: {player: null, computer: null},
     input: {player: '', computer: ''}
@@ -39,16 +29,34 @@ function App() {
 
   const [effectState, setEffectState] = useState(() => ({
     result: null,
-    score: {player: 0, computer: 0}
+    playerScore: 0,
+    computerScore: 0
   }));
 
-  // useEffect(() => {
-  //   if(!gameState.input.player) {
-  //     return null;
-  //   } else {
-
-  //   }
-  // }, [gameState])
+  useEffect(() => {
+    if(!gameState.input.player) {
+      return null;
+    } else {
+      const roundResult = playRound(gameState.input.player, gameState.input.computer);
+      switch (roundResult) {
+        case RESULTS.WIN:
+          setEffectState(prevState => {
+            return {...prevState, result: roundResult, playerScore: prevState.playerScore + 1 };
+          });
+          break;
+        case RESULTS.LOSE:
+          setEffectState(prevState => {
+            return {...prevState, result: roundResult, computerScore: prevState.computerScore + 1 };
+          });
+          break;
+        case RESULTS.DRAW:
+          setEffectState(prevState => {
+            return {...prevState, result: roundResult };
+          });
+          break;
+      };
+    }
+  }, [gameState])
   
   function btnOnClick(e) {
     const newInput = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
@@ -68,7 +76,7 @@ function App() {
         <div className="game-display">
           <div className="player">
             <h1>Player</h1>
-            <h2>{effectState.score.player}</h2>
+            <h2>{effectState.playerScore}</h2>
           </div>
           <div className="player-img">
             <img src={gameState.image.player} />
@@ -78,7 +86,7 @@ function App() {
           </div>
           <div className="computer">
             <h1>Comp</h1>
-            <h2>{effectState.score.computer}</h2>
+            <h2>{effectState.computerScore}</h2>
           </div>
         </div>
         <div className="result">

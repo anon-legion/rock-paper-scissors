@@ -52,10 +52,12 @@
   display: flex;
   height: 125px;
   width: 450px;
+  justify-content: center;
 }
 
 .result h2 {
   color: #9A6AFF;
+  text-transform: uppercase;
 }
 
 .btn-group {
