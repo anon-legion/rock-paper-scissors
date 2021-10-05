@@ -42,17 +42,20 @@ function App() {
     score: {player: 0, computer: 0}
   }));
 
-  useEffect(() => {
-    if(!gameState.input.player) {
-      return null;
-    } else {
+  // useEffect(() => {
+  //   if(!gameState.input.player) {
+  //     return null;
+  //   } else {
 
-    }
-  }, [gameState])
+  //   }
+  // }, [gameState])
   
   function btnOnClick(e) {
-    const input = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
-    const image = {player: imgSelector(input.player), computer: imgSelector(input.computer)};
+    const newInput = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
+    const newImage = {player: imgSelector(newInput.player), computer: imgSelector(newInput.computer)};
+    setGameState(prevState => {
+      return {image: newImage, input: newInput};
+    });
   }
 
   return (
