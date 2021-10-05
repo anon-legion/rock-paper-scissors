@@ -13,13 +13,13 @@ const RESULTS = {
 const computerPlay = () => {
     let roll = Math.random() * 300, result;
     switch (true) {
-        case Math.round(roll) % 3 === 0:
+        case Math.floor(roll) % 3 === 0:
             result = ACTIONS.ROCK;
             break;
-        case Math.round(roll) % 3 === 1:
+        case Math.floor(roll) % 3 === 1:
             result = ACTIONS.PAPER;
             break;
-        case Math.round(roll) % 3 === 2:
+        case Math.floor(roll) % 3 === 2:
             result = ACTIONS.SCISSORS;
             break;
         default:

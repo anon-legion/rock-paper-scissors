@@ -27,11 +27,13 @@ function App() {
     input: {player: '', computer: ''}
   }));
 
+
   const [effectState, setEffectState] = useState(() => ({
     result: null,
     playerScore: 0,
     computerScore: 0
   }));
+
 
   useEffect(() => {
     if(!gameState.input.player) {
@@ -58,6 +60,7 @@ function App() {
     }
   }, [gameState])
   
+
   function btnOnClick(e) {
     const newInput = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
     const newImage = {player: imgSelector(newInput.player), computer: imgSelector(newInput.computer)};
@@ -65,6 +68,23 @@ function App() {
       return {image: newImage, input: newInput};
     });
   }
+
+
+  function resetOnClick() {
+    setGameState(prevState => {
+      return {
+        image: {player: null, computer: null},
+        input: {player: '', computer: ''}
+      };
+    });
+    setEffectState(prevState => {
+      return {
+        result: null,
+        playerScore: 0,
+        computerScore: 0
+      };
+    });
+  };
 
   return (
     <div className="App">
@@ -96,6 +116,9 @@ function App() {
           <button onClick={btnOnClick} data-value={ACTIONS.ROCK}>Rock</button>
           <button onClick={btnOnClick} data-value={ACTIONS.PAPER}>Paper</button>
           <button onClick={btnOnClick} data-value={ACTIONS.SCISSORS}>Scissors</button>
+        </div>
+        <div className="btn-controls">
+          <button onClick={resetOnClick}>Reset</button>
         </div>
       </div>
     </div>

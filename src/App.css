@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&display=swap');
+
 .App {
   text-align: center;
   background-color: #08060B;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Kanit', sans-serif;
 }
 
 .App-header {
@@ -81,10 +83,25 @@ button:hover {
   font-weight: 600;
 }
 
+button:active {
+  transform: scale(1.1);
+  border-color: #9A6AFF;
+  box-shadow: 0 0 1rem #9A6AFF;
+}
+
 .btn-group button:first-child {
   border-radius: 8px 0 0 8px;
 }
 
 .btn-group button:last-child {
   border-radius: 0 8px 8px 0;
+}
+
+.btn-controls {
+  display: flex;
+  margin: 2rem;
+}
+
+.btn-controls button {
+  border-radius: 8px;
 }
