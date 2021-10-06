@@ -35,6 +35,22 @@ function App() {
     computerScore: 0
   }));
 
+  const [btnState, setBtnState] = useState(() => null);
+
+  const [count, setCount] = useState(() => 0);
+
+  
+  useEffect(() => {
+    if (count > 0) {
+      setTimeout(() => setCount(prevState => prevState - 1), 300)
+    } else {
+      if (!btnState) {
+        return null;
+      }
+      rps();
+    }
+  }, [count])
+
 
   useEffect(() => {
     if(!gameState.input.player) {
@@ -62,8 +78,13 @@ function App() {
   }, [gameState]);
   
 
-  function btnOnClick(e) {
-    const newInput = {player: e.target.getAttribute('data-value'), computer: computerPlay()}; 
+  function btnClickFunction(e) {
+    setBtnState(prevState => e.target);
+  }
+
+
+  function rps() {
+    const newInput = {player: btnState.getAttribute('data-value'), computer: computerPlay()}; 
     const newImage = {player: imgSelector(newInput.player), computer: imgSelector(newInput.computer)};
     setGameState(prevState => {
       return {image: newImage, input: newInput};
@@ -85,7 +106,14 @@ function App() {
         computerScore: 0
       };
     });
+    btnState.click();
+    setBtnState(prevState => null);
   };
+
+
+  function goOnClick() {
+    setCount(prevState => 3);
+  }
 
 
   return (
@@ -112,12 +140,12 @@ function App() {
           </div>
         </div>
         <div className="result">
-          <h2>{effectState.result}</h2>
+          <h2>{count <= 0 ? effectState.result : count}</h2>
         </div>
-        <ButtonGroup buttons={ACTIONS} clickFunction={btnOnClick}/>
+        <ButtonGroup buttons={ACTIONS} clickFunction={btnClickFunction}/>
         <div className="btn-controls">
-          <button onClick={resetOnClick}>Reset</button>
-          <button>Go!</button>
+          <button onClick={resetOnClick} disabled={false}>Reset</button>
+          <button onClick={goOnClick} disabled={count > 0 || !btnState ? true : false}>Go!</button>
         </div>
       </div>
     </div>

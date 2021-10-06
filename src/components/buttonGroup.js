@@ -5,8 +5,12 @@ const ButtonGroup = ({ buttons, clickFunction }) => {
     //takes in one input parameter buttons where button is an object with key value pairs
     const [clickedId, setClickedId] = useState(() => -1);
     const handleClick = (e, id) => {
-        setClickedId(prevState => id);
-        clickFunction(e);
+        if (id === clickedId) {
+            setClickedId(prevState => -1);
+        } else {
+            setClickedId(prevState => id);
+            clickFunction(e);
+        }
     }
 
     return (
