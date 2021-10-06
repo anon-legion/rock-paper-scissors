@@ -4,6 +4,7 @@ import engineResources from './scripts/engine.js';
 import rock from './img/rps_rock.png';
 import paper from './img/rps_paper.png';
 import scissors from './img/rps_scissors.png';
+import ButtonGroup from './components/buttonGroup.js';
 const { computerPlay, playRound, ACTIONS, RESULTS } = engineResources;
 
 
@@ -58,7 +59,7 @@ function App() {
           break;
       };
     }
-  }, [gameState])
+  }, [gameState]);
   
 
   function btnOnClick(e) {
@@ -67,7 +68,7 @@ function App() {
     setGameState(prevState => {
       return {image: newImage, input: newInput};
     });
-  }
+  };
 
 
   function resetOnClick() {
@@ -85,6 +86,7 @@ function App() {
       };
     });
   };
+
 
   return (
     <div className="App">
@@ -112,13 +114,10 @@ function App() {
         <div className="result">
           <h2>{effectState.result}</h2>
         </div>
-        <div className="btn-group">
-          <button onClick={btnOnClick} data-value={ACTIONS.ROCK}>Rock</button>
-          <button onClick={btnOnClick} data-value={ACTIONS.PAPER}>Paper</button>
-          <button onClick={btnOnClick} data-value={ACTIONS.SCISSORS}>Scissors</button>
-        </div>
+        <ButtonGroup buttons={ACTIONS} clickFunction={btnOnClick}/>
         <div className="btn-controls">
           <button onClick={resetOnClick}>Reset</button>
+          <button>Go!</button>
         </div>
       </div>
     </div>

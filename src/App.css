@@ -4,10 +4,11 @@
   text-align: center;
   background-color: #08060B;
   font-family: 'Kanit', sans-serif;
+  height: 100vh;
 }
 
 .App-header {
-  min-height: 18vh;
+  height: 18vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,20 +24,20 @@
 }
 
 .App-body {
-  min-height: 82vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 3.5% 30px 0px 30px;
+  padding: 50px 30px 0px 30px;
 }
 
 .game-display {
   display: flex;
   flex-direction: row;
   gap: 1.5vw;
+  flex-wrap: wrap;
 }
 
 .player h1, .computer h1{
@@ -48,6 +49,12 @@
   height: 371px;
   width: 290px;
   justify-content: center;
+  flex: 1 1 auto;
+}
+
+img {
+  width: auto;
+  height: 100%;
 }
 
 .result {
@@ -65,22 +72,44 @@
 .btn-group {
   display: flex;
   color: #DEDEDF;
-  border-radius: 8px;
 }
 
 button {
   border: 1px solid white;
   color: #DEDEDF;
   background-color: #20AFBB;
-  padding: .5rem 1rem;
+  padding: .3rem 1rem;
   width: 150px;
   border-radius: 0px;
   font: inherit;
+  text-transform: capitalize;
 }
 
 button:hover {
   background-color: #228E99;
   font-weight: 600;
+}
+
+.btn-group button:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.btn-group button:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.btn-controls {
+  display: flex;
+  margin: 2rem;
+  gap: 1.5vw;
+}
+
+.btn-controls button {
+  background-color: #08060B;
+  color: #20AFBB;
+  border: 3px solid #20AFBB;
+  border-radius: 16px;
+  padding: 0px 1rem;
 }
 
 button:active {
@@ -89,19 +118,10 @@ button:active {
   box-shadow: 0 0 1rem #9A6AFF;
 }
 
-.btn-group button:first-child {
-  border-radius: 8px 0 0 8px;
-}
 
-.btn-group button:last-child {
-  border-radius: 0 8px 8px 0;
-}
-
-.btn-controls {
-  display: flex;
-  margin: 2rem;
-}
-
-.btn-controls button {
-  border-radius: 8px;
+.active {
+  border: 1.5px solid #9A6AFF;
+  box-shadow: 0 0 .1rem #9A6AFF;
+  font-weight: 600;
+  color: #9A6AFF;
 }
