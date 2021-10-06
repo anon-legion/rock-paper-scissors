@@ -7,6 +7,7 @@ const ButtonGroup = ({ buttons, clickFunction }) => {
     const handleClick = (e, id) => {
         if (id === clickedId) {
             setClickedId(prevState => -1);
+            clickFunction(e);
         } else {
             setClickedId(prevState => id);
             clickFunction(e);

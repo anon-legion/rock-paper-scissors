@@ -79,7 +79,7 @@ function App() {
   
 
   function btnClickFunction(e) {
-    setBtnState(prevState => e.target);
+    e.target === btnState ? setBtnState(prevState => null) : setBtnState(prevState => e.target);
   }
 
 
@@ -119,8 +119,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Awesome RPS</h1>
-        <h2>(Not rapes dummy, Rock Paper Scissors!)</h2>
+        <h1>World RPS Championship</h1>
+        <h2>(You vs the best, Rock Paper Scissors!)</h2>
       </header>
       <div className="App-body">
         <div className="game-display">
@@ -135,7 +135,7 @@ function App() {
             <img src={gameState.image.computer} />
           </div>
           <div className="computer">
-            <h1>Comp</h1>
+            <h1>Champ</h1>
             <h2>{effectState.computerScore}</h2>
           </div>
         </div>
@@ -144,7 +144,7 @@ function App() {
         </div>
         <ButtonGroup buttons={ACTIONS} clickFunction={btnClickFunction}/>
         <div className="btn-controls">
-          <button onClick={resetOnClick} disabled={false}>Reset</button>
+          <button onClick={resetOnClick} disabled={count > 0 ? true : false}>Reset</button>
           <button onClick={goOnClick} disabled={count > 0 || !btnState ? true : false}>Go!</button>
         </div>
       </div>
