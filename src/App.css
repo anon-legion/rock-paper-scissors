@@ -18,7 +18,7 @@
   border-bottom: 2px solid #20AFBB;
 }
 
-.App-header h1, .App-header h2 {
+h1, h2 {
   margin: 0px;
   color: #9A6AFF;
 }
@@ -35,13 +35,34 @@
 
 .game-display {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1.5vw;
   flex-wrap: wrap;
 }
 
-.player h1, .computer h1{
-  margin-top: 0px;
+.label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.player, .computer {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  gap: 15px;
+}
+
+.player h1, .computer h1 {
+  color: #DEDEDF;
+}
+
+.illustration {
+  display: flex;
+  flex: row;
+  gap: 1.5vw;
+  flex-wrap: wrap;
 }
 
 .player-img, .computer-img {
@@ -49,12 +70,17 @@
   height: 371px;
   width: 290px;
   justify-content: center;
-  flex: 1 1 auto;
+  flex: 1 1 0;
 }
 
 img {
+  object-fit: cover;
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
   width: auto;
-  height: 100%;
+  height: auto;
+
 }
 
 .result {
@@ -62,10 +88,10 @@ img {
   height: 125px;
   width: 450px;
   justify-content: center;
+  align-items: center;
 }
 
 .result h2 {
-  color: #9A6AFF;
   text-transform: uppercase;
 }
 

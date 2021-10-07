@@ -73,6 +73,8 @@ function App() {
             return {...prevState, result: roundResult };
           });
           break;
+        default:
+          return null;
       };
     }
   }, [gameState]);
@@ -124,19 +126,23 @@ function App() {
       </header>
       <div className="App-body">
         <div className="game-display">
-          <div className="player">
-            <h1>Player</h1>
-            <h2>{effectState.playerScore}</h2>
+          <div className="label">
+            <div className="player">
+              <h2>{effectState.playerScore}</h2>
+              <h1>Player</h1>
+            </div>
+            <div className="computer">
+              <h1>Champ</h1>
+              <h2>{effectState.computerScore}</h2>
+            </div>
           </div>
-          <div className="player-img">
-            <img src={gameState.image.player} />
-          </div>
-          <div className="computer-img">
-            <img src={gameState.image.computer} />
-          </div>
-          <div className="computer">
-            <h1>Champ</h1>
-            <h2>{effectState.computerScore}</h2>
+          <div className="illustration">
+            <div className="player-img">
+              <img src={gameState.image.player} alt={`${gameState.input.player}`}/>
+            </div>
+            <div className="computer-img">
+              <img src={gameState.image.computer} alt={`${gameState.input.computer}`} />
+            </div>
           </div>
         </div>
         <div className="result">

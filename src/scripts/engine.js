@@ -39,6 +39,8 @@ const playRound = (playerChoice, computerChoice) => {
                 return RESULTS.LOSE;
             case ACTIONS.SCISSORS:
                 return RESULTS.WIN;
+            default:
+                return null;
         }
     } else if (playerChoice === ACTIONS.PAPER) {
         switch (computerChoice) {
@@ -48,6 +50,8 @@ const playRound = (playerChoice, computerChoice) => {
                 return RESULTS.DRAW;
             case ACTIONS.SCISSORS:
                 return RESULTS.LOSE;
+            default:
+                return null;
         }
     } else {
         switch (computerChoice) {
@@ -57,6 +61,8 @@ const playRound = (playerChoice, computerChoice) => {
                 return RESULTS.WIN;
             case ACTIONS.SCISSORS:
                 return RESULTS.DRAW;
+            default:
+                return null;
         }
     }
 }
