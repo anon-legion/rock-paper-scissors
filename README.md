@@ -2,6 +2,8 @@
 
 ### React based browser game
 
+### Responsive design for mobile, tablet, and desktop
+
 ### Click [here](https://anon-legion.github.io/rock-paper-scissors/) to preview app on GH-Pages
 <br>
 
