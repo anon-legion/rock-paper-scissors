@@ -5,6 +5,7 @@ import rock from './img/rps_rock.png';
 import paper from './img/rps_paper.png';
 import scissors from './img/rps_scissors.png';
 import ButtonGroup from './components/buttonGroup.js';
+import 'bulma/css/bulma.min.css';
 const { computerPlay, playRound, ACTIONS, RESULTS } = engineResources;
 
 
@@ -119,42 +120,51 @@ function App() {
 
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>World RPS Championship</h1>
-        <h2>(You vs the best, Rock Paper Scissors!)</h2>
+    <>
+      <header className="hero">
+        <div className="hero-body p-4">
+          <h1 className="title is-1 is-size-3-mobile">World RPS Championship</h1>
+          <h2 className="subtitle is-3 has-text-grey-lighter is-size-6-mobile">(You vs the best, Rock Paper Scissors!)</h2>
+        </div>
       </header>
-      <div className="App-body">
-        <div className="game-display">
-          <div className="label">
-            <div className="player">
-              <h2>{effectState.playerScore}</h2>
-              <h1>Player</h1>
+      <main className="section is-flex is-flex-direction-column is-align-items-center">
+        <div className="container">
+          <div className="level is-flex">
+            <div className="level-left">
+              <div className="level-item has-item-gap">
+                <h2 className="is-size-3 has-text-grey-lighter">{effectState.playerScore}</h2>
+                <h1 className="is-size-3 has-text-weight-semibold">Player</h1>
+              </div>
             </div>
-            <div className="computer">
-              <h1>Champ</h1>
-              <h2>{effectState.computerScore}</h2>
+            <div className="level-right is-flex is-align-items-center m-0">
+              <div className="level-item has-item-gap">
+                <h1 className="is-size-3 has-text-weight-semibold">Champ</h1>
+                <h2 className="is-size-3 has-text-grey-lighter">{effectState.computerScore}</h2>
+              </div>
             </div>
           </div>
           <div className="illustration">
-            <div className="player-img">
-              <img src={gameState.image.player} alt={`${gameState.input.player}`}/>
-            </div>
-            <div className="computer-img">
+            <figure className="image">
+              <img
+                src={gameState.image.player}
+                alt={`${gameState.input.player}`}
+              />
+            </figure>
+            <figure className="image">
               <img src={gameState.image.computer} alt={`${gameState.input.computer}`} />
-            </div>
+            </figure>
           </div>
         </div>
         <div className="result">
-          <h2>{count <= 0 ? effectState.result : count}</h2>
+          <h1 className="is-size-3 is-uppercase has-text-weight-semibold">{count <= 0 ? effectState.result : count}</h1>
         </div>
         <ButtonGroup buttons={ACTIONS} clickFunction={btnClickFunction}/>
         <div className="btn-controls">
           <button onClick={resetOnClick} disabled={count > 0 ? true : false}>Reset</button>
           <button onClick={goOnClick} disabled={count > 0 || !btnState ? true : false}>Go!</button>
         </div>
-      </div>
-    </div>
+      </main>
+    </>
   );
 }
 

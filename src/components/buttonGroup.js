@@ -15,13 +15,13 @@ const ButtonGroup = ({ buttons, clickFunction }) => {
     }
 
     return (
-        <div className="btn-group">
+        <div className="buttons has-addons is-centered">
             {Object.values(buttons).map((objVal, i) => (
                 <button 
                     key={i}
                     data-value={objVal}
                     onClick={(e) => handleClick(e, i)}
-                    className={i === clickedId ? 'active' : ''}
+                    className={`button has-text-weight-semibold is-size-5-tablet ${i === clickedId ? 'active' : ''}`}
                 >
                     {objVal}
                 </button>

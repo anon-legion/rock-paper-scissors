@@ -1,80 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@1,200&display=swap');
 
-.App {
+* {
   text-align: center;
-  background-color: #08060B;
-  font-family: 'Kanit', sans-serif;
-  height: 100vh;
+  font-family: 'Kanit', sans-serif!important;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-header {
-  height: 18vh;
+header {
+  border: 2px solid #9A6AFF;
+  padding: .5rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  border-bottom: 2px solid #20AFBB;
+  flex-direction: inherit;
 }
 
-h1, h2 {
-  margin: 0px;
-  color: #9A6AFF;
+header div {
+  border: 2px solid #20AFBB;
 }
 
-.App-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 50px 30px 0px 30px;
+h1 {
+  color: #9A6AFF!important  ;  
 }
 
-.game-display {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5vw;
-  flex-wrap: wrap;
-}
-
-.label {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.player, .computer {
-  display: flex;
-  flex-direction: row;
-  align-items:center;
-  gap: 15px;
-}
-
-.player h1, .computer h1 {
-  color: #DEDEDF;
+.has-item-gap {
+  gap: .5rem;
 }
 
 .illustration {
   display: flex;
   flex: row;
   gap: 1.5vw;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 601px;
+  min-height: 371px;
 }
 
-.player-img, .computer-img {
-  display: flex;
-  height: 371px;
-  width: 290px;
-  justify-content: center;
-  flex: 1 1 0;
+@media (max-width: 768px) {
+  .illustration {
+    min-width: 88vw;
+    min-height: 200px;
+  }
 }
 
 img {
-  object-fit: cover;
+  object-fit: contain;
   display: block;
   max-width: 100%;
   max-height: 100%;
@@ -85,14 +55,10 @@ img {
 
 .result {
   display: flex;
-  height: 125px;
-  width: 450px;
+  min-height: 48px;
   justify-content: center;
   align-items: center;
-}
-
-.result h2 {
-  text-transform: uppercase;
+  margin: 1.5rem 0;
 }
 
 .btn-group {
@@ -101,14 +67,18 @@ img {
 }
 
 button {
-  border: 1px solid white;
-  color: #DEDEDF;
-  background-color: #20AFBB;
-  padding: .3rem 1rem;
+  color: #DEDEDF!important;
+  background-color: #20AFBB!important;
   width: 150px;
-  border-radius: 0px;
   font: inherit;
   text-transform: capitalize;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  button {
+    width: calc(30vmin + 5px);
+  }
 }
 
 button:hover {
@@ -116,26 +86,17 @@ button:hover {
   font-weight: 600;
 }
 
-.btn-group button:first-child {
-  border-radius: 10px 0 0 10px;
-}
-
-.btn-group button:last-child {
-  border-radius: 0 10px 10px 0;
-}
-
 .btn-controls {
   display: flex;
-  margin: 2rem;
   gap: 1.5vw;
 }
 
 .btn-controls button {
-  background-color: #08060B;
-  color: #20AFBB;
+  background-color: #08060B!important;
+  color: #20AFBB!important;
   border: 3px solid #20AFBB;
-  border-radius: 16px;
-  padding: 0px 1rem;
+  border-radius: 12px;
+  padding: 5px 1rem;
 }
 
 button:active {
@@ -146,8 +107,8 @@ button:active {
 
 
 .active {
-  border: 1.5px solid #9A6AFF;
-  box-shadow: 0 0 .1rem #9A6AFF;
-  font-weight: 600;
-  color: #9A6AFF;
+  border: 1.5px solid #9A6AFF!important;
+  box-shadow: 0 0 .1rem #9A6AFF!important;
+  font-weight: 600!important;
+  color: #9A6AFF!important;
 }
