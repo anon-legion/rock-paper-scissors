@@ -5,9 +5,11 @@ import rock from './img/rps_rock.png';
 import paper from './img/rps_paper.png';
 import scissors from './img/rps_scissors.png';
 import ButtonGroup from './components/buttonGroup.js';
+import Footer from './components/Footer.js';
 import 'bulma/css/bulma.min.css';
-const { computerPlay, playRound, ACTIONS, RESULTS } = engineResources;
 
+
+const { computerPlay, playRound, ACTIONS, RESULTS } = engineResources;
 
 const imgSelector = (action) => {
   switch (action) {
@@ -109,8 +111,10 @@ function App() {
         computerScore: 0
       };
     });
-    btnState.click();
-    setBtnState(prevState => null);
+    if (btnState) {
+      btnState.click();
+      setBtnState(prevState => null);
+    };
   };
 
 
@@ -160,10 +164,11 @@ function App() {
         </div>
         <ButtonGroup buttons={ACTIONS} clickFunction={btnClickFunction}/>
         <div className="btn-controls">
-          <button onClick={resetOnClick} disabled={count > 0 ? true : false}>Reset</button>
-          <button onClick={goOnClick} disabled={count > 0 || !btnState ? true : false}>Go!</button>
+          <button className="is-size-5" onClick={resetOnClick} disabled={count > 0 ? true : false}>Reset</button>
+          <button className="is-size-5" onClick={goOnClick} disabled={count > 0 || !btnState ? true : false}>Go!</button>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

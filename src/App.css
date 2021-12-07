@@ -34,6 +34,7 @@ h1 {
   flex-wrap: nowrap;
   min-width: 601px;
   min-height: 371px;
+  justify-content: center;
 }
 
 @media (max-width: 768px) {
@@ -111,4 +112,11 @@ button:active {
   box-shadow: 0 0 .1rem #9A6AFF!important;
   font-weight: 600!important;
   color: #9A6AFF!important;
+}
+
+div#root > footer {
+  position: sticky;
+  top: 100vh;
+  background-color: transparent;
+  z-index: 2;
 }
